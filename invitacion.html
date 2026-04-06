@@ -1030,8 +1030,8 @@
 
   </div>
 
-  <audio id="bgAudio" preload="auto">
-    <source src="musica/carlosrivera-teesperaba.mp3" type="audio/mpeg">
+  <audio id="bgAudio" preload="auto" autoplay muted>
+    <source src="musica/carlosrivera-teesperaba.mpeg" type="audio/mpeg">
   </audio>
 
   <script>
@@ -1065,6 +1065,7 @@
     const audio = document.getElementById('bgAudio');
     const audioBtn = document.getElementById('audioBtn');
     let isPlaying = false;
+    let unmuted = false;
 
     function toggleAudio() {
       if (!audio) return;
@@ -1079,6 +1080,18 @@
       }
     }
     audioBtn.addEventListener('click', toggleAudio);
+
+    // Desmutear al primer toque/click para permitir autoplay continuo
+    function enableAudioOnce() {
+      if (!audio || unmuted) return;
+      audio.muted = false;
+      audio.play().catch(() => {});
+      unmuted = true;
+      window.removeEventListener('click', enableAudioOnce);
+      window.removeEventListener('touchstart', enableAudioOnce);
+    }
+    window.addEventListener('click', enableAudioOnce, { once: true });
+    window.addEventListener('touchstart', enableAudioOnce, { once: true });
 
   </script>
 </body>
