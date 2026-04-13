@@ -79,6 +79,7 @@
       .ubic-text,
       .regalo .regalo-text,
       .rsvp .rsvp-text { justify-items: center; max-width: 340px; align-content: start; }
+      .regalo .regalo-text { align-items: center; text-align: center; }
       /* Compactar espacio entre imagen y textos en confirmación (solo móvil) */
       .rsvp-row { gap: 0; margin-top: -102px; align-items: flex-start; }
       .rsvp { padding-top: 0; }
@@ -93,7 +94,14 @@
       .rsvp .cta-row { margin-top: 12px; }
       .ubic-text .info-text,
       .regalo .info-text,
-      .rsvp .info-text { text-align: center; font-size: 13px; }
+      .rsvp .info-text,
+      .rsvp .info-highlight { text-align: center; font-size: 13px; margin: 0; }
+      /* Centrado completo del texto de regalitos en mobile */
+      .regalo .regalo-text { align-items: center; text-align: center; }
+      .regalo .info-text { margin: 0 auto; text-align: center; font-size: 13.5px; }
+      .info-item.regalo .info-text,
+      .info-item.regalo .info-highlight { text-align: center !important; margin-left: auto; margin-right: auto; width: 100%; }
+      .info-item.regalo .regalo-text { justify-items: center; align-items: center; }
       .regalo .info-text { margin: 0; }
       .regalo .info-title,
       .rsvp .info-title,
@@ -101,6 +109,8 @@
       .cta-row { margin-top: 2px; justify-content: center; }
       .cta-btn { padding: 12px 22px; }
       .info-highlight { line-height: 1.45; }
+      /* Mover texto de llamada en Regalitos un poco más abajo en mobile */
+      .info-item.regalo .cta-row { margin-top: 10px; }
     }
     .section {
       position: relative;
@@ -871,7 +881,8 @@
       gap: 10px;
       align-content: center;
       max-width: 340px;
-      justify-items: start;
+      justify-items: center;
+      text-align: center;
       margin: 0 auto;
       flex: 1;
     }
@@ -906,13 +917,19 @@
       gap: 10px;
       align-content: center;
       max-width: 340px;
-      justify-items: start;
+      justify-items: center;
+      text-align: center;
       margin: 0 auto;
       flex: 1;
     }
     .rsvp .info-title { margin: 0 0 4px; text-align: center; width: 100%; }
-    .rsvp .info-text { text-align: left; font-size: 13.5px; }
-    .rsvp .info-highlight { text-align: center; white-space: normal; }
+    .rsvp .info-text,
+    .rsvp .info-highlight {
+      text-align: center;
+      font-size: 13.5px;
+      margin: 0;
+    }
+    .rsvp .info-highlight { white-space: normal; }
     .rsvp .cta-btn { align-self: center; }
   </style>
 </head>
@@ -977,10 +994,10 @@
         <div class="ubic-row">
           <img class="ubic-img" src="imagenes/patito_globo.png" alt="Patito ubicación">
           <div class="ubic-text">
-            <p class="info-lead">Teatro de Calderón de Lima</p>
-            <p class="info-text">Av. Manuel A. Odría Nº 179</p>
+            <p class="info-lead">Local comunal del grupo 7 Villa El Salvador</p>
+            <p class="info-text">Sector 1 Grupo 7, Local Comunal, Villa El Salvador</p>
             <div class="cta-row" style="margin-top:4px;">
-              <a class="cta-btn soft" href="https://maps.google.com/?q=Av.%20Manuel%20A.%20Odr%C3%ADa%20179%2C%20Lima" target="_blank" rel="noopener">Ver mapa</a>
+              <a class="cta-btn soft" href="https://maps.app.goo.gl/jYG9dE7zFQAKYw678?g_st=iw" target="_blank" rel="noopener">Ver mapa</a>
             </div>
           </div>
         </div>
