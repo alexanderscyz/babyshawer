@@ -66,16 +66,35 @@
         max-width: 360px;
       }
       .regalo-row .regalo-img { order: 1; }
-      .regalo-row .regalo-text { order: 2; margin-top: -28px; }
+      .regalo-row .regalo-text { order: 2; margin-top: -24px; }
+      .regalo-row { gap: 8px; margin-top: -12px; }
       .ubic-img { width: 150px; margin-top: -4px; }
-      .regalo .regalo-img { width: 150px; margin-top: -4px; }
-      .rsvp .rsvp-img { width: 150px; margin-top: -8px; }
+      .regalo .regalo-img { width: 150px; margin: -22px auto -40px; display: block; }
+      /* Ajuste de separación imagen-texto en confirmación (mobile) */
+      .rsvp .rsvp-img {
+        width: 148px;
+        display: block;
+        margin: -48px auto -78px;
+      }
       .ubic-text,
       .regalo .regalo-text,
       .rsvp .rsvp-text { justify-items: center; max-width: 340px; align-content: start; }
+      /* Compactar espacio entre imagen y textos en confirmación (solo móvil) */
+      .rsvp-row { gap: 0; margin-top: -102px; align-items: flex-start; }
+      .rsvp { padding-top: 0; }
+      /* Padding mínimo para eliminar hueco */
+      .info-item { padding: 8px 10px 2px; }
+      .info-item.regalo { padding-top: 0; padding-bottom: 4px; }
+      .info-item.rsvp { padding-top: 0; padding-bottom: 0; }
+      .rsvp .info-title { margin: 0 0 2px; }
+      .rsvp .rsvp-text { gap: 2px; margin-top: -14px; justify-items: center; }
+      .rsvp .info-text { margin: 0; text-align: center; font-size: 12.5px; }
+      .rsvp .info-highlight { text-align: center; font-size: 12.5px; }
+      .rsvp .cta-row { margin-top: 12px; }
       .ubic-text .info-text,
       .regalo .info-text,
       .rsvp .info-text { text-align: center; font-size: 13px; }
+      .regalo .info-text { margin: 0; }
       .regalo .info-title,
       .rsvp .info-title,
       .ubicacion .info-title { text-align: center; }
