@@ -615,6 +615,25 @@
     .btn:active { transform: translateY(0); }
     .btn.primary { background: #fefefe; color: #5a472e; }
     .btn.dark { background: #5a472e; color: #fff; }
+    /* Botones pequeños auxiliares */
+    .inline-cta {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: #f6e1d2;
+      color: #5f402f;
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.1);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .inline-cta:hover, .inline-cta:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.14);
+      outline: none;
+    }
+    .inline-cta:focus-visible { box-shadow: 0 0 0 2px rgba(193,158,115,0.45), 0 10px 18px rgba(0,0,0,0.14); }
     /* Modal listado de regalitos */
     .modal {
       position: fixed;
@@ -818,17 +837,20 @@
     .info-highlight.muted { color: #8f7b67; font-weight: 600; }
     .cta-btn {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 7px 14px;
       margin: 6px auto 8px;
-      border-radius: 14px;
+      border-radius: 12px;
+      border: none;
       background: #f1c9b8;
       color: #5f402f;
       font-weight: 800;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       text-decoration: none;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+      box-shadow: 0 7px 12px rgba(0,0,0,0.11);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
       font-family: 'Playfair Display', serif;
+      min-width: 118px;
+      font-size: 14px;
     }
     .cta-btn.soft { background: #f6e1d2; color: #6b5140; }
     .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(0,0,0,0.20); }
@@ -986,7 +1008,7 @@
     <section class="hero section">
       <button class="audio-btn" id="audioBtn">▶</button>
       <img class="clouds" src="imagenes/nubes.png" alt="" aria-hidden="true">
-      <img src="imagenes/patito_cesta_pro.png" alt="Patito en cesta" class="hero-figure">
+      <img src="imagenes/patito_cesta_pro.png" alt="Patito en cesta" class="hero-figure" loading="lazy">
       <div class="hero-sides">
         <span class="word">BA</span>
         <span class="word">BY</span>
@@ -1055,7 +1077,7 @@
         <h3 class="info-title">Regalitos</h3>
         <div class="regalo-row">
           <div class="regalo-text">
-            <p class="info-text">Tu presencia será el regalo más hermoso para nosotros. Si deseas tener un detalle con nuestra pequeña, preparamos con mucho cariño una lista de regalos.</p>
+            <p class="info-text">Lo más importante es compartir este momento contigo. Si deseas tener un detalle con nuestro bebé, aquí encontrarás algunas ideas.</p>
           </div>
           <img class="regalo-img" src="imagenes/patito_regalo.png" alt="Patito con regalo">
         </div>
@@ -1074,7 +1096,7 @@
           </div>
         </div>
         <div class="cta-row">
-          <a class="cta-btn" href="https://wa.me/51983426778?text=Confirmo%20mi%20asistencia%20al%20baby%20shower%20de%20Lucca" target="_blank" rel="noopener">Click aquí</a>
+          <a class="cta-btn soft" href="https://wa.me/51983426778?text=Confirmo%20mi%20asistencia%20al%20baby%20shower%20de%20Lucca" target="_blank" rel="noopener">Click aquí</a>
         </div>
       </div>
 
@@ -1149,9 +1171,10 @@
     function toggleAudio() {
       if (!audio) return;
       if (!isPlaying) {
-        audio.play().catch(() => {});
-        audioBtn.textContent = '❚❚';
-        isPlaying = true;
+        audio.play().then(() => {
+          audioBtn.textContent = '❚❚';
+          isPlaying = true;
+        }).catch(() => {});
       } else {
         audio.pause();
         audioBtn.textContent = '▶';
